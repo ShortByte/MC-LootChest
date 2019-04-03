@@ -1,0 +1,7 @@
+main: me.shortbyte.teschtplugin.TeschtPlugin
+name: TeschtPlugin
+author: ShortByte
+version: 0.1
+
+commands:
+    chatlog:

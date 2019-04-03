@@ -1,0 +1,11 @@
+{
+    "items": [
+        {
+            "material":"written_book",
+            "data":0,
+            "displayName":"&e&l1 Monat Premium",
+            "chance":1,
+            "type":"RANG"
+        }
+    ]
+}
