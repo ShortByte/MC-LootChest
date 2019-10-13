@@ -13,49 +13,44 @@ import org.bukkit.inventory.meta.ItemMeta;
  */
 public class ItemBuilder {
 
-    private ItemStack item;
-    
-    public ItemBuilder(Material material) {
-        this.item = new ItemStack(material);
-    }
-    
+    private final ItemStack item;
+
     public ItemBuilder(Material material, int amount) {
         this.item = new ItemStack(material, amount);
     }
-    
-    public ItemBuilder(Material material, int amount, short durability) {
-        this.item = new ItemStack(material, amount, durability);
-    }
-    
+
     public static ItemBuilder item(Material material) {
-        return new ItemBuilder(material);
+        return item(material, 1);
     }
-    
+
     public static ItemBuilder item(Material material, int amount) {
         return new ItemBuilder(material, amount);
     }
-    
-    public static ItemBuilder item(Material material, int amount, short durability) {
-        return new ItemBuilder(material, amount, durability);
+
+    public static ItemBuilder item(Material material, int amount, short damage) {
+        final ItemBuilder builder = new ItemBuilder(material, amount);
+        return builder.setDurability(damage);
     }
-    
+
     public ItemBuilder setDisplayName(String name) {
-        ItemMeta meta = this.item.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
-        this.item.setItemMeta(meta);
+        final ItemMeta meta = this.item.getItemMeta();
+        if (meta != null) {
+          meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+          this.item.setItemMeta(meta);
+        }
         return this;
     }
-    
+
     public ItemBuilder setAmount(int amount) {
         this.item.setAmount(amount);
         return this;
     }
-    
-    public ItemBuilder setDurability(short durability) {
-        this.item.setDurability(durability);
+
+    public ItemBuilder setDurability(short damage) {
+        this.item.setDurability(damage);
         return this;
     }
-    
+
     public ItemStack build() {
         return this.item;
     }
