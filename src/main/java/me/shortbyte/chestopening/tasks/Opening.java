@@ -86,7 +86,7 @@ public class Opening implements Runnable {
         this.task.cancel();
         if (this.cleanup != null) {
             synchronized (inventory) {
-                if (this.cleanup.getTask().isCancelled​()) {
+                if (this.cleanup.getTask().isCancelled()) {
                     return;
                 }
                 this.cleanup.getTask().cancel();
